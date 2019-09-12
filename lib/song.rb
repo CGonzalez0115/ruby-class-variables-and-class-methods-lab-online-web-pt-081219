@@ -27,12 +27,16 @@ class Song
   end
 
   def self.genre_count
-    genre_count = {}
-    genre_count = Hash.new(0)
-    @@genres.each {|genre| genre_count[genre] += 1}
-    genre_count = genre_count.sort_by {|genre, amount|genre}
-    genre_count.each do |genre, amount|
-      eval("#{genre_count}")
+    results = {}
+
+    @@genres.each do |genre|
+      if results[genre] == nil
+        results[genre] = 0
+      end
+
+      results[genre] += 1
     end
+
+    results
   end
 end
